@@ -1,0 +1,17 @@
+com\example\registrationlogin\authentication\service\AuthenticationService$LoginResult.class
+com\example\registrationlogin\RegistrationLoginApplication.class
+com\example\registrationlogin\user\repository\UserRepository.class
+com\example\registrationlogin\security\JwtAuthenticationFilter.class
+com\example\registrationlogin\security\SecurityConfig.class
+com\example\registrationlogin\authentication\service\AuthenticationService.class
+com\example\registrationlogin\dto\RegistrationRequest.class
+com\example\registrationlogin\entity\JwtToken.class
+com\example\registrationlogin\dto\ApiResponse.class
+com\example\registrationlogin\authentication\repository\JwtTokenRepository.class
+com\example\registrationlogin\security\JwtService.class
+com\example\registrationlogin\user\controller\UserController.class
+com\example\registrationlogin\security\ApplicationConfig.class
+com\example\registrationlogin\authentication\controller\AuthenticationController.class
+com\example\registrationlogin\user\service\UserService.class
+com\example\registrationlogin\entity\User.class
+com\example\registrationlogin\dto\LoginRequest.class
