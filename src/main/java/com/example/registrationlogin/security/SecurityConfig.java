@@ -37,7 +37,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/reg", "/api/login", "/api/logout").permitAll()
+                       .requestMatchers("/api/reg", "/api/login", "/api/logout", "/api/**").permitAll()
                         .requestMatchers("/api/home").authenticated()
                         .anyRequest().authenticated()
                 )
@@ -57,12 +57,12 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         // Allow common React development origins
-        configuration.setAllowedOrigins(Arrays.asList(
-                "http://localhost:5173",
-                "http://127.0.0.1:5173",
-                "http://localhost:3000",
-                "http://127.0.0.1:3000"
-        ));
+       configuration.setAllowedOrigins(Arrays.asList(
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://project-frontend-woad-gamma.vercel.app"
+));
+        
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true);

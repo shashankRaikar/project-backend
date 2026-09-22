@@ -21,6 +21,7 @@ public class UserController {
     }
 
     @PostMapping("/reg")
+    
     public ResponseEntity<ApiResponse> register(@Valid @RequestBody RegistrationRequest registrationRequest) {
         ApiResponse response = userService.registerUser(registrationRequest);
         if (response.isSuccess()) {

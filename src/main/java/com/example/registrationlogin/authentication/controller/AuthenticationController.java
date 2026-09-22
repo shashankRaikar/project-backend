@@ -31,6 +31,12 @@ public class AuthenticationController {
     @Value("${jwt.cookie-name:authToken}")
     private String cookieName;
 
+    @Value("${cookie.secure:false}")
+    private boolean cookieSecure;
+
+    @Value("${cookie.same-site:Lax}")
+    private String cookieSameSite;
+
     @Autowired
     public AuthenticationController(AuthenticationService authenticationService,
                                     JwtService jwtService) {
@@ -51,10 +57,10 @@ public class AuthenticationController {
         // Create HttpOnly cookie with 1 hour expiry (3600 seconds)
         ResponseCookie authCookie = ResponseCookie.from(cookieName, result.getToken())
                 .httpOnly(true)
-                .secure(false) // Set to false for localhost HTTP
+                .secure(cookieSecure)
                 .path("/")
                 .maxAge(3600)
-                .sameSite("Lax")
+                .sameSite(cookieSameSite)
                 .build();
 
         response.addHeader(HttpHeaders.SET_COOKIE, authCookie.toString());
@@ -78,10 +84,10 @@ public class AuthenticationController {
         // Clear the cookie by setting maxAge to 0
         ResponseCookie clearCookie = ResponseCookie.from(cookieName, "")
                 .httpOnly(true)
-                .secure(false)
+                .secure(cookieSecure)
                 .path("/")
                 .maxAge(0)
-                .sameSite("Lax")
+                .sameSite(cookieSameSite)
                 .build();
 
         response.addHeader(HttpHeaders.SET_COOKIE, clearCookie.toString());
